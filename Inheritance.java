@@ -38,13 +38,54 @@ class Programmer extends Person{
     }
 }
 
+//Створюємо клас Student
+class Student extends Person{
+ 
+    private String university;//Компанія в якій працює програміст
+    private int course;//Мова програмування програміста
+    
+    public Student(String name, String surname, String  university, int course) {
+       /*Оператор super потрібен для того щоб унаслідувати поля з 
+       допусковим модулем private.
+       */
+        super(name, surname);
+        this. university =  university;
+        this.course = course;
+    }
+    
+    public void displayInfo(){
+        super.displayInfo();
+        System.out.println("Університет: " + university +" Курс: " + course );
+    }
+}
+
+class ProgrammerExtended extends Programmer{
+ 
+    private int expirience; //Досвід роботи
+    
+    public ProgrammerExtended(String name, String surname, String company, String progLang, int expirience) {
+             
+        super(name, surname, company, progLang);
+        this.expirience = expirience;
+    }
+    
+    public void displayInfo(){
+        super.displayInfo();
+        System.out.println(" Досвід роботи: " + expirience );
+    }
+}
+
 class Test {
     public static void main(String[] args) {
     
-        Person A = new Person("Mike", "Potter");
-        Programmer B = new Programmer("Max", "Ponomarenko", "Google", "JavaScript");
+        Person a = new Person("Mike", "Potter");
+        Programmer b = new Programmer("Max", "Ponomarenko", "Google", "JavaScript");
+        Student c = new Student("John", "Smit", "MIT", 2);
+        ProgrammerExtended d = new ProgrammerExtended("Mark", "Cooper", "Oracle", "Java", 6);
         
-        A.displayInfo();
-        B.displayInfo();
+        a.displayInfo();
+        b.displayInfo();
+        c.displayInfo();
+        d.displayInfo();
     }
 }
